@@ -1,0 +1,6 @@
+Estudiantes
+Materias
+Salones
+Grupos
+GrupoEstudiante
+SalonGrupo

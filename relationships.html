@@ -77,12 +77,45 @@
                 </section>
                 <!-- Main content -->
                 <section class="content">
-                    <div class="alert alert-warning alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        <h4><i class="icon fa fa-warning"></i>There were 2 error(s)</h4>
-                        <p>SchemaSpy was unable to generate diagram(s) of table relationships.<br />
-                            Check application output for details.
-                        </p>
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <i class="fa fa-code-fork"></i>
+                            <h3 class="box-title">Diagrams</h3>
+                        </div>
+                        <div class="box-body">
+                            <div class="nav-tabs-custom">
+                                <!-- Tabs within a box -->
+                                <h5>By default only columns that are primary keys, foreign keys or indexes are shown.</h5>
+                                <ul class="nav nav-tabs pull-left ui-sortable-handle">
+                                    <li class="active"><a href="#compactDegreeImg-chart" data-toggle="tab" aria-expanded="true">Compact</a></li>
+                                    <li class=""><a href="#largeDegreeImg-chart" data-toggle="tab" aria-expanded="true">Large</a></li>
+                                </ul>
+                                <div class="tab-content no-padding">
+                                    <div class="chart tab-pane active" id="compactDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="compactRelationshipsDiagram" name="compactRelationshipsDiagram">
+<area shape="rect" id="node1" href="tables/Estudiantes.html" target="_top" title="Estudiantes" alt="" coords="211,5,397,152">
+<area shape="rect" id="node2" href="tables/GrupoEstudiante.html" target="_top" title="GrupoEstudiante" alt="" coords="441,39,668,161">
+<area shape="rect" id="node3" href="tables/Grupos.html" target="_top" title="Grupos" alt="" coords="217,169,391,321">
+<area shape="rect" id="node4" href="tables/Materias.html" target="_top" title="Materias" alt="" coords="5,228,167,375">
+<area shape="rect" id="node5" href="tables/Salones.html" target="_top" title="Salones" alt="" coords="227,339,381,491">
+<area shape="rect" id="node6" href="tables/SalonGrupo.html" target="_top" title="SalonGrupo" alt="" coords="463,240,647,363">
+</map>
+                                        <a name='diagram'><img id="compactDegreeImg" src="diagrams/summary/relationships.real.compact.png" usemap="#compactRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                    <div class="chart tab-pane " id="largeDegreeImg-chart" style="position: relative; overflow-x:auto;">
+                                        <map id="largeRelationshipsDiagram" name="largeRelationshipsDiagram">
+<area shape="rect" id="node1" href="tables/Estudiantes.html" target="_top" title="Estudiantes" alt="" coords="211,5,397,216">
+<area shape="rect" id="node2" href="tables/GrupoEstudiante.html" target="_top" title="GrupoEstudiante" alt="" coords="441,71,668,193">
+<area shape="rect" id="node3" href="tables/Grupos.html" target="_top" title="Grupos" alt="" coords="217,233,391,385">
+<area shape="rect" id="node4" href="tables/Materias.html" target="_top" title="Materias" alt="" coords="5,292,167,444">
+<area shape="rect" id="node5" href="tables/Salones.html" target="_top" title="Salones" alt="" coords="227,403,381,555">
+<area shape="rect" id="node6" href="tables/SalonGrupo.html" target="_top" title="SalonGrupo" alt="" coords="463,304,647,427">
+</map>
+                                        <a name='diagram'><img id="largeDegreeImg" src="diagrams/summary/relationships.real.large.png" usemap="#largeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
                     </div>
                 </section>
             </div>

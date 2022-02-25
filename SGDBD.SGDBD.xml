@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<database name="SGDBD" schema="SGDBD" type="MySQL - 5.5.5-10.0.38-MariaDB">
+   <tables>
+      <table catalog="SGDBD" name="Estudiantes" numRows="2" remarks="" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <child catalog="SGDBD" column="idEstudianteFk" foreignKey="FK_GrupoEstudiante_idEstudiante" implied="false" onDeleteCascade="false" table="GrupoEstudiante"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="nombre" nullable="false" remarks="" size="25" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="apellido" nullable="false" remarks="" size="25" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="correo" nullable="true" remarks="" size="25" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="semestre" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="UK_Correo" unique="true">
+            <column ascending="true" name="correo"/>
+         </index>
+      </table>
+      <table catalog="SGDBD" name="GrupoEstudiante" numRows="2" remarks="" type="TABLE">
+         <column autoUpdated="false" defaultValue="0" digits="0" id="0" name="idGrupoFk" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <parent catalog="SGDBD" column="idGrupo" foreignKey="FK_GrupoEstudiante_idGrupo" implied="false" onDeleteCascade="false" table="Grupos"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="idEstudianteFk" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <parent catalog="SGDBD" column="id" foreignKey="FK_GrupoEstudiante_idEstudiante" implied="false" onDeleteCascade="false" table="Estudiantes"/>
+         </column>
+         <primaryKey column="idEstudianteFk" sequenceNumberInPK="1"/>
+         <primaryKey column="idGrupoFk" sequenceNumberInPK="2"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="idGrupoFk"/>
+            <column ascending="true" name="idEstudianteFk"/>
+         </index>
+         <index name="FK_GrupoEstudiante_idEstudiante" unique="false">
+            <column ascending="true" name="idEstudianteFk"/>
+         </index>
+      </table>
+      <table catalog="SGDBD" name="Grupos" numRows="4" remarks="" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="idGrupo" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <child catalog="SGDBD" column="idGrupoFk" foreignKey="FK_GrupoEstudiante_idGrupo" implied="false" onDeleteCascade="false" table="GrupoEstudiante"/>
+            <child catalog="SGDBD" column="idGrupoFk" foreignKey="FK_IdGrupo" implied="false" onDeleteCascade="false" table="SalonGrupo"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="numeroGrupo" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="idMateria" nullable="false" remarks="" size="10" type="VARCHAR" typeCode="12">
+            <parent catalog="SGDBD" column="sigla" foreignKey="FK_IdMateria" implied="false" onDeleteCascade="false" table="Materias"/>
+         </column>
+         <primaryKey column="idGrupo" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="idGrupo"/>
+         </index>
+         <index name="UK_Grupo" unique="true">
+            <column ascending="true" name="idMateria"/>
+            <column ascending="true" name="numeroGrupo"/>
+         </index>
+      </table>
+      <table catalog="SGDBD" name="Materias" numRows="2" remarks="" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="sigla" nullable="false" remarks="" size="10" type="VARCHAR" typeCode="12">
+            <child catalog="SGDBD" column="idMateria" foreignKey="FK_IdMateria" implied="false" onDeleteCascade="false" table="Grupos"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="nombre" nullable="false" remarks="" size="25" type="VARCHAR" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="creditos" nullable="false" remarks="" size="10" type="INT" typeCode="4"/>
+         <primaryKey column="sigla" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="sigla"/>
+         </index>
+         <index name="UK_Materia" unique="true">
+            <column ascending="true" name="nombre"/>
+         </index>
+      </table>
+      <table catalog="SGDBD" name="Salones" numRows="8" remarks="" type="TABLE">
+         <column autoUpdated="true" defaultValue="null" digits="0" id="0" name="idSalon" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <child catalog="SGDBD" column="idSalonFk" foreignKey="FK_IdSalon" implied="false" onDeleteCascade="false" table="SalonGrupo"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="edificio" nullable="false" remarks="" size="1" type="CHAR" typeCode="1"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="salon" nullable="true" remarks="" size="10" type="INT" typeCode="4"/>
+         <primaryKey column="idSalon" sequenceNumberInPK="1"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="idSalon"/>
+         </index>
+         <index name="UK_Salon" unique="true">
+            <column ascending="true" name="edificio"/>
+            <column ascending="true" name="salon"/>
+         </index>
+      </table>
+      <table catalog="SGDBD" name="SalonGrupo" numRows="0" remarks="" type="TABLE">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="idGrupoFk" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <parent catalog="SGDBD" column="idGrupo" foreignKey="FK_IdGrupo" implied="false" onDeleteCascade="false" table="Grupos"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="idSalonFk" nullable="false" remarks="" size="10" type="INT" typeCode="4">
+            <parent catalog="SGDBD" column="idSalon" foreignKey="FK_IdSalon" implied="false" onDeleteCascade="false" table="Salones"/>
+         </column>
+         <primaryKey column="idGrupoFk" sequenceNumberInPK="1"/>
+         <primaryKey column="idSalonFk" sequenceNumberInPK="2"/>
+         <index name="PRIMARY" unique="true">
+            <column ascending="true" name="idGrupoFk"/>
+            <column ascending="true" name="idSalonFk"/>
+         </index>
+         <index name="FK_IdSalon" unique="false">
+            <column ascending="true" name="idSalonFk"/>
+         </index>
+      </table>
+   </tables>
+</database>
